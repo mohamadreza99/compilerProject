@@ -1,0 +1,144 @@
+/*
+include<stdio.h>
+include<math.h>
+
+union u1{
+    int aba = 2, bba[5];
+    float cba = 0.4;
+};
+
+union u2{
+    int aaa = 2, bbb[5];
+    float ccc = 0.4;
+};
+
+struct s1{
+    int ddd = 2, eee[5];
+    float fff = 0.4;
+};
+
+enum e1{
+    spring, summer, fall, winter
+};
+
+char func1();
+char func2(bool);
+char func3(bool, int);
+char func4(bool, int, char);
+char func5(bool, int, char, float);
+
+*/
+
+int main(){
+    int a = 335, b[60], c = 333, d[]= {1,2,3,4,5,6,7};
+    float e = 2.34;
+    double f = 234.513245;
+    int g = 0, k;
+
+    if(a&&c<c) do{
+        c = c +c;
+    }
+
+    c = (a * 33) * c + (a + g * 2);
+    int x = 20, y = 33;
+    if (x < y) do {
+        x = 999;
+    }
+
+    a = a * 1;
+    if ( a > c ) do {
+        c = (a * c) * 33;
+        a = (g--);
+    }
+    a = 1;
+
+    for i in range(72, 91) do {
+        a = c + 1;
+        a = a++;
+        c = a--;
+    }
+
+    switch(a){
+        case 700;
+            x = 22;
+            break;
+        case 701;
+            x = 33;
+        case 702;
+            x = 44;
+        case 703;
+            x = 55;
+            f = 555.555;
+        default ;
+            k = 123;
+            k = 234;
+            k = 345;
+    }
+
+    repeat {
+        a=1;
+        c = a;
+    } until(x >= y);
+
+    repeat
+        c = a;
+    until(x >= y);
+
+    if(a < c) do {
+        if(g != c) do
+            x = 1;
+        else
+            g = c++;
+    } else {
+        x = 2;
+    }
+
+    int *point;
+
+    a = a++;
+
+    while(x > y)do{
+        a = a+1;
+    }
+
+    if(a < c) do {
+        x = 1;
+    } else if(c <= a) do {
+        x = 2;
+    } else if(a == c) do {
+        x = 3;
+    } else if(a >= c) do {
+        x = 4;
+    } else if(a > c) do {
+        x = 5;
+    } else {
+        x = 6;
+    }
+
+    for a in range(1, 11) do {
+        a = a + 1;
+    }
+
+    for a in range(1, 2) do
+        a = a + 1;
+
+
+}
+
+/*
+char f1(){
+    return 1;
+}
+
+bool f2(int af1){
+    int aab;
+    aab = b++;
+}
+
+double f3(int af2, float bf2, bool xf2){
+    int ax;
+    ax = b++;
+    return ax;
+}
+*/
+
