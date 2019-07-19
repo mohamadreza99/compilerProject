@@ -1,0 +1,8 @@
+E : T E'
+E' : + T @add E'
+E' : #
+T : F T'
+T' : * F @mult T'
+T' : #
+F : @push id
+F : ( E )

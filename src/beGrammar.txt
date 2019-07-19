@@ -1,0 +1,24 @@
+BE : @SWITCHPARSER BT BE'
+BE' : ORR BE'
+ORR : || BT @OR
+BE' : #
+BT : BF BT'
+BT' : ANDD BT'
+ANDD : && BF @AND
+BT' : #
+ION : @PUSH id
+ION : @PUSH num
+BF : ION
+BF : E
+BF : ( BE )
+BF : ION < ION @LT
+BF : ION <= ION @LE
+BF : ION > ION @GT
+BF : ION >= ION @GE
+BF : ION == ION @EQ
+BF : ION != ION @NE
+E : E + E @ADD
+E : E - E @SUB
+E : E * E @MULT
+E : E / E @DIV
+E : ION

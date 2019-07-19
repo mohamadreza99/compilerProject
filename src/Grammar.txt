@@ -1,0 +1,110 @@
+S : INC SS int main ( ) { MBODY
+MBODY : STL RET } FUNC
+MBODY : RET } FUNC
+SS : UNION STRUCT ENUM PROTOTYPE
+INC : include < id . id > INC
+INC : #
+UNION : union id { BODY } ; UNION
+UNION : #
+STRUCT : struct id { BODY } ; STRUCT
+STRUCT : #
+ENUM : enum id { EBODY } ; ENUM
+ENUM : #
+PROTOTYPE : TYPP id ( PHEAD ) ; PROTOTYPE
+PROTOTYPE : #
+FUNC : @PUSH TYP @PUSH id @PUSH# ( FHEAD @CFDESC ) { FBODY
+FBODY : STL RET } FUNC
+FBODY : RET } FUNC
+FUNC : #
+FHEAD : @PUSH TYP @PUSH id FHEAD'
+FHEAD : #
+FHEAD' : , @PUSH TYP @PUSH id FHEAD'
+FHEAD' : #
+RET : return IDORN ;
+RET : #
+PHEAD : TYP PHEAD'
+PHEAD : #
+PHEAD' : , TYP PHEAD'
+PHEAD' : #
+EBODY : id EBODY'
+EBODY' : , id EBODY'
+EBODY' : #
+EBODY : #
+BODY : DCL BODY
+BODY : #
+STL : ST STL'
+STL' : #
+STL' : ST STL'
+ST : AST
+ST : DCL
+ST : WST
+ST : FST
+ST : DOWST
+ST : IFST
+ST : SWST
+ST : FC
+FC : call @PUSH id ( ) @CALL ;
+CALLH : @PUSH id CALLH'
+CALLH : #
+CALLH' : , @PUSH id
+CALLH' : #
+AST : @PUSH id = E @ASSIGN ;
+IFST : if ( @SWITCHPARSER BE ) do @JZ SORL ELIFST
+ELIFST : else @JMPCOMPLJZ ELSIFST' @COMPLJMP
+ELIFST : @COMPLJZ #
+ELSIFST' : if ( @SWITCHPARSER BE ) do @JZ SORL ELIFST
+ELSIFST' : SORL
+SORL : { STL }
+SORL : ST
+WST : while ( @PUSHPC @SWITCHPARSER BE ) do @JZ SORL @JMPWCOMPLJZ
+FST : for @PUSH id in range ( @MOV IDORN , IDORN ) do @FOR SORL @COMPLFOR
+DOWST : repeat @PUSHPC SORL until ( @SWITCHPARSER BE @DW ) ;
+SWST : switch ( @PUSH id @JMPL0 ) { CASE }
+CASE : case @PUSH num ; @PUSHPC STL BREAK
+BREAK : CASE'
+BREAK : break ; @JMPOUT CASE'
+CASE' : @PUSHPC default ; STL @JMPOUT @SWITCH
+CASE' : # @PUSHPC @JMPOUT @SWITCH
+CASE' : case @PUSH num ; @PUSHPC STL BREAK
+DCL : @PUSH TYP PO @PUSH id CONT
+PO : *
+PO : #
+CONT : @CDESC = IDORN @ASSIGN CONT'
+CONT : [ @CADESC X CONT'
+CONT : @CDESC CONT'
+CONT' : , @PUSH id CONT
+CONT' : ;
+X : num ]
+X : ] = { @PUSH# IDORN N } @ARRAYSETSIZEB
+N : , IDORN N
+N : #
+IDORN : @PUSH id
+IDORN : @PUSH num
+TYP : float
+TYP : int
+TYP : char
+TYP : double
+TYP : bool
+TYPP : float
+TYPP : void
+TYPP : char
+TYPP : double
+TYPP : bool
+E : T E'
+E' : + T @ADD E'
+E' : - T @SUB E'
+E' : #
+T : F T'
+T' : * F @MULT T'
+T' : / F @DIV T'
+T' : #
+F : ID
+ID : @PUSH id ID'
+ID' : @PP ++ @MM
+ID' : @MM --
+ID' : #
+ID : -- @PUSH id
+ID : ++ @PUSH id
+F : @PUSH num
+F : ( E )
+BE : #
